@@ -37,14 +37,14 @@ const ship = {
   height : 150
 }
 
-//ennemy declaration
-let ennemyReady = false
-const ennemyImage = new Image()
-ennemyImage.onload = function (){
-  ennemyReady = true
+//enemy declaration
+let enemyReady = false
+const enemyImage = new Image()
+enemyImage.onload = function (){
+  enemyReady = true
 }
-ennemyImage.src = "textures/ennemy.png"
-const ennemy = {
+enemyImage.src = "textures/enemy.png"
+const enemy = {
   x : canvas.width / 2,
   y : 0,
   speed : 500,
@@ -117,8 +117,8 @@ const render = function(){
   if (shipReady){
     ctx.drawImage(shipImage, ship.x, ship.y, ship.width, ship.height)
   }
-  if (ennemyReady){
-    ctx.drawImage(ennemyImage, ennemy.x, ennemy.y, ennemy.width, ennemy.height)
+  if (enemyReady){
+    ctx.drawImage(enemyImage, enemy.x, enemy.y, enemy.width, enemy.height)
   }
 }
 
