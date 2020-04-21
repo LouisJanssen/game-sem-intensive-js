@@ -37,7 +37,7 @@ const ship = {
   height : 150
 }
 
-//enemy declaration
+//enemies
 let enemyReady = false
 const enemyImage = new Image()
 enemyImage.onload = function (){
@@ -45,11 +45,18 @@ enemyImage.onload = function (){
 }
 enemyImage.src = "textures/enemy.png"
 const enemy = {
-  x : canvas.width / 2,
-  y : 0,
+  x : Math.random()* (canvas.width - 150) + 10,
+  y : -150,
   speed : 500,
   width : 150,
   height : 150
+}
+
+const moveEnemies = function (){
+  if(enemy.y < canvas.height){
+    enemy.y += 5
+    console.log(enemy.y)
+  }
 }
 
 //input player
@@ -126,7 +133,8 @@ const main = function () {
   let now = Date.now()
 	let delta = now - then
 
-	update(delta / 1000);
+  moveEnemies()
+  update(delta / 1000)
   render()
 
   then = now
@@ -134,6 +142,7 @@ const main = function () {
   requestAnimationFrame(main)
 }
 
+//Ressources for AnimationFrame for different browsers
 const w = window
 requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame || w.msRequestAnimationFrame || w.mozRequestAnimationFrame
 
